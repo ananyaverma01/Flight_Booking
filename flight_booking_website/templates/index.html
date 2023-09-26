@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Flight Search</title>
+    <link rel='stylesheet' type='text/css' href="../static/styles.css">
+  </head>
+
+  <body>
+      
+      <div class="container">
+        
+        <h1>FLY HIGH</h1>
+        <h2>Fly with Ease, Book with Confidence</h2>
+        
+        <form id="flight-search-form" action="/" method="POST">
+          <label for="from" class="source">From:</label>
+            <select id="from" name="from" required>
+              <option value="" disabled selected hidden>Select Source</option>
+              <option value="Kolkata">Kolkata</option>
+              <option value="Bengaluru">Bengaluru</option>
+              <option value="Guwahati">Guwahati</option>
+            </select>
+
+          <label for="to" class="dest">To:</label>
+          <select id="to" name="to" required>
+            <option value="" disabled selected hidden>Select Destination</option>
+            <option value="Kolkata">Kolkata</option>
+            <option value="Bengaluru">Bengaluru</option>
+            <option value="Guwahati">Guwahati</option>
+          </select>
+
+          <label for="passengers">Passengers:</label>
+          <input
+            type="number"
+            id="passengers"
+            name="passengers"
+            min="1"
+            required
+          />
+
+          <label for="date">Date of Journey:</label>
+          <input type="date" id="date" name="date" required />
+
+          <button class="btn" type="submit">Search Flights</button>
+        </form>
+        
+      </div>
+      
+      
+      {% if key  %}
+      <h2 class="search" style="color: white;">FLIGHT RESULTS</h2>
+      {% for x in data %}
+      <div class="result">
+        <div class="heading">
+            <span>Search number</span>
+            <span>Source</span>
+            <span>Destination</span>
+            <span>Time</span>
+            <span>Price</span>
+        </div>
+        <div class="row">
+            <span>{{loop.index}}</span>
+            <span>{{x[1]}}</span>
+            <span>{{x[2]}}</span>
+            <span>{{x[3]}}</span>
+            <span>{{x[4]}}</span>
+        </div>
+    </div>
+    
+    
+      {% endfor %}
+      {% endif %}
+      
+  </body>
+</html>
